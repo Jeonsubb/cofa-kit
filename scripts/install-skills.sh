@@ -6,7 +6,13 @@ set -euo pipefail
 
 KIT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 DEST="${AGENT_SKILLS_DIR:-$HOME/.agents/skills}"
-mkdir -p "$DEST"
+# 홈 아래 설정 폴더가 읽기 전용인 환경이면 작업 폴더의 .agents/skills로 대체한다.
+if ! mkdir -p "$DEST" 2>/dev/null || ! touch "$DEST/.write-test" 2>/dev/null; then
+  echo "warn: $DEST 에 쓸 수 없어 ./.agents/skills 에 설치합니다."
+  DEST="$(pwd)/.agents/skills"
+  mkdir -p "$DEST"
+fi
+rm -f "$DEST/.write-test"
 
 install_dir() {
   local src="$1" name
