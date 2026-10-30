@@ -16,13 +16,21 @@ AI 코딩 에이전트(Codex)와 실무형 과제를 수행할 때 쓰는 **작�
 | `prompts/delegation.md` | 작은 단위 위임·검증·교차 리뷰 프롬프트 패턴 |
 | `checklists/submit.md` | 제출 직전 체크리스트 |
 | `scripts/bootstrap.sh` | 위 템플릿을 작업 폴더에 복사 (기존 파일은 덮어쓰지 않음) |
+| `skills/cofa-workflow` | 과제 전체 진행 순서 스킬 |
+| `skills/verify-and-review` | 성공 기준 검증·결함 찾기 스킬 |
+| `skills/handoff-doc` | 저장소 안 인수인계 문서 작성 스킬 |
+| `scripts/install-skills.sh` | 스킬을 `$HOME/.agents/skills`에 설치 (`--with-community`: mattpocock/skills의 tdd, diagnosing-bugs 추가) |
 
 ## 사용법
 
 ```bash
 git clone https://github.com/Jeonsubb/cofa-kit.git /tmp/cofa-kit
 bash /tmp/cofa-kit/scripts/bootstrap.sh .
+bash /tmp/cofa-kit/scripts/install-skills.sh --with-community
+# Codex 재시작 후 /skills 로 확인, $cofa-workflow 처럼 호출
 ```
+
+외부 스킬: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT License)를 설치 시점에 공개 저장소에서 가져옵니다.
 
 과제 안내에 필수 파일명·양식이 있으면 **과제 안내가 항상 우선**입니다.
 이 키트의 양식은 필요한 부분만 골라 쓰고, 맞지 않으면 버립니다.
