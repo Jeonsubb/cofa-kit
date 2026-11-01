@@ -17,10 +17,10 @@ copy_if_absent() {
 }
 
 copy_if_absent "$KIT_DIR/AGENTS.template.md" "$TARGET/AGENTS.md"
-for f in interview agreement decisions verification handoff; do
+for f in interview agreement decisions ai-judgment-log architecture verification handoff; do
   copy_if_absent "$KIT_DIR/docs/templates/$f.md" "$TARGET/docs/$f.md"
 done
 
 echo
-echo "참고: $KIT_DIR/prompts/delegation.md , $KIT_DIR/checklists/submit.md"
+echo "참고: $KIT_DIR/prompts/delegation.md , $KIT_DIR/checklists/submit.md , $KIT_DIR/checklists/questions.md"
 echo "과제 안내에 지정된 파일명·양식이 있으면 그쪽을 우선하세요."
